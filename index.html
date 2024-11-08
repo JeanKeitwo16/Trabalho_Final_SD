@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="pesquisa">
+    <button id="enviarPesquisa">Enviar</button><br />
+    <br /><input type="text" id="valorNovo">
+    <button id="enviarInicio">Adicionar no Inicio</button>
+    <button id="enviarFinal">Adicionar no Final</button><br />
+    <br /><button id="verificarAniversario">Verificar Aniversario</button><br />
+    <br /><input type="text" id="numero1">
+    <input type="text" id="numero2">
+    <button id="calcularElevacao">Calcular Elevacao</button>
+    <p id="paragrafo"></p>
+    <script>
+        var array = ["Teste", "Passe", "Leite", "Café", "HTML", "JAVA", "JS", "CSS", "Casa"];
+        document.querySelector("#enviarPesquisa").onclick = function () {
+            var pesquisa = document.querySelector("#pesquisa").value;
+            document.querySelector("#paragrafo").innerHTML = "A palavra pesquisada está no index nº " + array.indexOf(pesquisa);
+            if (array.indexOf(pesquisa) == -1)
+            document.querySelector("#paragrafo").innerHTML = "A palavra pesquisada não está na array";
+            else
+            document.querySelector("#paragrafo").innerHTML = "A palavra pesquisada está no index nº " + array.indexOf(pesquisa);
+        }
+        document.querySelector("#enviarInicio").onclick = function () {
+            var valorNovo = document.querySelector("#valorNovo").value;
+            array.unshift(valorNovo);
+            document.querySelector("#paragrafo").innerHTML = "A array atual é " + array;
+        }
+        document.querySelector("#enviarFinal").onclick = function () {
+            var valorNovo = document.querySelector("#valorNovo").value;
+            array.push(valorNovo);
+            document.querySelector("#paragrafo").innerHTML = "A array atual é " + array;
+        }
+        function birthday(){
+            var hoje = new Date();
+        var dataAniversario = new Date(2025, 2, 16, 23, 59, 59, 999);
+        var msPorDia = 24 * 60 * 60 * 1000;
+        var diasRestantes = (dataAniversario.getTime() - hoje.getTime()) / msPorDia;
+        var diasRestantes = Math.round(diasRestantes);
+        return diasRestantes
+        }
+        function calculo(){
+        var num1 = document.querySelector("#numero1").value;
+        var num2 = document.querySelector("#numero2").value;
+        var numeroElevado = num1 ** num2;
+        return numeroElevado;
+        }
+        document.querySelector("#calcularElevacao").onclick = function () {
+            document.querySelector("#paragrafo").innerHTML = "O resultado é " + calculo();
+        }
+        document.querySelector("#verificarAniversario").onclick = function () {
+            document.querySelector("#paragrafo").innerHTML = "Faltam " + birthday() + " dias para seu aniversario";
+        }
+    </script>
+</body>
+</html>
